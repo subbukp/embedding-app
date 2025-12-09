@@ -53,7 +53,7 @@ export default async function DashboardPage() {
         powerbi_report_id: d.powerbi_report_id,
         metabase_dashboard_id: d.metabase_dashboard_id,
         created_at: d.created_at,
-        groups: d.groups ? { id: d.groups.id, name: d.groups.name } : null,
+        groups: d.groups && d.groups.length > 0 ? { id: d.groups[0].id, name: d.groups[0].name } : null,
       })) || []
   } else {
     const { data: userDashboards } = await supabase
@@ -88,10 +88,10 @@ export default async function DashboardPage() {
         powerbi_report_id: d.powerbi_report_id,
         metabase_dashboard_id: d.metabase_dashboard_id,
         created_at: d.created_at,
-        groups: {
-          id: d.groups.id,
-          name: d.groups.name,
-        },
+        groups: d.groups && d.groups.length > 0 ? {
+          id: d.groups[0].id,
+          name: d.groups[0].name,
+        } : null,
       })) || []
   }
 

@@ -1,13 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Next.js 15+ middleware configuration
-  experimental: {
-    // Enable server components in middleware if needed
-    serverComponentsExternalPackages: [],
-  },
-
-  // Configure headers for Supabase
+  // Configure headers for API routes
   async headers() {
     return [
       {
